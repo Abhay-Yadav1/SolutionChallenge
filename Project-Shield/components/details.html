@@ -1,0 +1,85 @@
+<div class="details-container">
+    <h2>Listing Details</h2>
+    <div class="file-preview">
+        <h3>File Preview</h3>
+        <p>This is a placeholder for the file preview.</p>
+    </div>
+
+    <div class="progress-bar-container tooltip">
+        <span class="tooltiptext">Match Score: Risk Level</span>
+        <div class="progress-bar" id="match-score-progress"></div>
+    </div>
+
+    <div class="details">
+        <p><strong>Match Percentage:</strong> <span id="match-percentage-value">95%</span></p>
+        <p><strong>Detected Website:</strong> <span id="website-value">piratebay.com</span></p>
+        <p><strong>Legal Status:</strong> <span id="legal-status-value">Pending</span></p>
+    </div>
+    <button id="generate-ai-takedown-btn" class="button tooltip">
+        Generate AI Takedown
+        <span class="tooltiptext">Generate takedown request using AI</span>
+    </button>
+
+    <!-- AI Takedown Modal -->
+    <div id="ai-takedown-modal" class="modal d-none">
+        <div class="modal-content">
+            <span class="close-button" id="cancel-ai-takedown-btn-modal">&times;</span>
+            <h3>Confirm AI Takedown</h3>
+            <p>Generate an AI-powered takedown request? This will use advanced AI to create a more effective takedown notice.</p>
+            <div class="modal-actions">
+                <button id="confirm-ai-takedown-btn" class="button">Confirm AI Takedown</button>
+                <button id="cancel-ai-takedown-btn-modal2" class="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .modal {
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        padding-top: 60px;
+    }
+
+    .modal-content {
+        background-color: var(--dark-gray);
+        margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+        border: 1px solid #888;
+        width: 60%; /* Could be more or less, depending on screen size */
+        border-radius: 10px;
+        padding: 20px;
+        position: relative;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4),0 6px 20px 0 rgba(0,0,0,0.3);
+    }
+
+    .close-button {
+        position: absolute;
+        right: 25px;
+        top: 0;
+        color: #aaaaaa;
+        font-size: 30px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+        color: var(--light-gray);
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .modal-actions {
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+    }
+     .d-none {
+        display: none;
+    }
+</style>

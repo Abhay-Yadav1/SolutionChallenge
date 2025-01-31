@@ -1,0 +1,649 @@
+/* Global Styles */
+:root {
+    --dark-bg: #111;
+    --neon-cyan: #00ffff;
+    --deep-blue: #000033;
+    --light-gray: #e0e0e0;
+    --medium-gray: #2a2a2a;
+    --dark-gray: #252525;
+    --button-bg: #37474f;
+    --button-hover-bg: #455a64;
+    --modern-font: 'Poppins', sans-serif;
+    --error-color: #ff4d4d; /* Red color for errors */
+}
+
+body {
+    font-family: var(--modern-font);
+    background-color: var(--dark-bg);
+    color: var(--light-gray);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+#app {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    transition: flex-direction 0.3s ease;
+}
+
+#navbar {
+    background-color: var(--medium-gray);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.5s ease, padding 0.3s ease;
+}
+
+#main-container {
+    display: flex;
+    flex: 1;
+    transition: flex-direction 0.3s ease;
+}
+
+#sidebar {
+    background-color: var(--dark-gray);
+    width: 280px;
+    padding: 2rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: width 0.5s ease, background-color 0.5s ease, padding 0.3s ease;
+}
+
+#sidebar.collapsed {
+    width: 80px;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+#sidebar.collapsed li span {
+    display: none;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+#sidebar li {
+    margin-bottom: 1rem;
+    transition: margin-bottom 0.3s ease;
+}
+
+#sidebar li a {
+    display: flex;
+    align-items: center;
+    color: var(--neon-cyan);
+    text-decoration: none;
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#sidebar li a:hover {
+    background-color: var(--deep-blue);
+    color: var(--light-gray);
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#sidebar li a.active {
+    border-left: 4px solid var(--neon-cyan);
+    background-color: var(--deep-blue);
+    color: var(--light-gray);
+    text-decoration: none;
+}
+
+#sidebar li a i {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    transition: margin-right 0.3s ease;
+}
+
+#sidebar.collapsed li a i {
+    margin-right: 0;
+}
+
+
+#content {
+    flex: 1;
+    padding: 3rem;
+    transition: padding 0.3s ease;
+}
+
+a {
+    color: var(--neon-cyan);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button, .button {
+    background-color: var(--button-bg);
+    color: var(--light-gray);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 0 2px transparent;
+}
+
+button:hover, .button:hover {
+    background-color: var(--button-hover-bg);
+    transform: scale(1.05);
+    box-shadow: 0 0 0 2px var(--neon-cyan);
+}
+
+button:active, .button:active {
+    transform: scale(1.0);
+    box-shadow: 0 0 0 2px var(--deep-blue);
+}
+
+/* Form Styles */
+.login-container {
+    width: 400px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: var(--dark-gray);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--neon-cyan);
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0; /* Add some padding within the form */
+}
+
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.7rem;
+    color: var(--neon-cyan);
+    transition: color 0.3s ease;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--medium-gray);
+    border: 2px solid transparent;
+    border-radius: 6px;
+    color: var(--light-gray);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    background-color: #333;
+}
+
+.form-group .password-input-container {
+    position: relative;
+    width: 100%; /* Ensure container takes full width */
+}
+
+.form-group .password-input-container input {
+    padding-right: 3rem; /* Space for the toggle button */
+}
+
+.form-group .password-toggle-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--light-gray);
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0.6;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.form-group .password-toggle-button:hover {
+    opacity: 1;
+    color: var(--neon-cyan);
+}
+
+.login-container button[type="submit"],
+.login-container .button {
+    margin-top: 1rem; /* Add some space above the submit button */
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+}
+
+.form-group input.invalid {
+    border-color: var(--error-color);
+    box-shadow: 0 0 0 2px var(--error-color);
+}
+
+
+/* Dashboard Styles */
+.dashboard-container {
+    padding: 2rem;
+    transition: padding 0.3s ease;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+    transition: margin-bottom 0.3s ease, gap 0.3s ease;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease, transform 0.3s ease, border 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.stat-card:hover {
+    transform: scale(1.05);
+    border: 2px solid var(--neon-cyan);
+    box-shadow: 0 8px 16px rgba(0, 255, 255, 0.3);
+}
+
+.stat-card h3 {
+    margin-top: 0;
+    color: var(--neon-cyan);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.stat-card p {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    transition: font-size 0.3s ease;
+}
+
+#piracy-table th, #piracy-table td {
+    padding: 1.5rem;
+    transition: padding 0.3s ease;
+}
+
+#piracy-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+/* Alerts Styles */
+.alerts ul {
+    list-style: none;
+    padding: 0;
+    transition: padding 0.3s ease;
+}
+
+.alerts li {
+    background-color: var(--dark-gray);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.5s ease, box-shadow 0.5s ease, margin-bottom 0.3s ease;
+}
+
+.alerts li:last-child {
+    margin-bottom: 0;
+}
+
+/* Listings Page Styles */
+.listings-container {
+    padding: 2rem;
+    transition: padding 0.3s ease;
+}
+
+.listings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    transition: margin-bottom 0.3s ease;
+}
+
+.listings-header input[type="search"] {
+    padding: 0.8rem;
+    border-radius: 6px;
+    border: 1px solid var(--medium-gray);
+    background-color: var(--medium-gray);
+    color: var(--light-gray);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.listings-header input[type="search"]:focus {
+    outline: none;
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.3);
+    background-color: #333;
+}
+
+
+#piracy-table {
+    width: 100%;
+    border-collapse: collapse;
+    transition: width 0.3s ease;
+}
+
+#piracy-table th,
+#piracy-table td {
+    border: 1px solid var(--medium-gray);
+    padding: 1rem;
+    text-align: left;
+    transition: border 0.3s ease,
+        padding 0.3s ease; /* Corrected padding property */
+}
+
+#piracy-table th {
+    background-color: var(--medium-gray);
+    color: var(--neon-cyan);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#piracy-table th:hover {
+    background-color: #333;
+}
+
+
+#piracy-table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+
+#piracy-table tbody tr:hover {
+    background-color: #333;
+    cursor: pointer;
+}
+
+/* Details Page Styles */
+.details-container {
+    padding: 2rem;
+    transition: padding 0.3s ease;
+}
+
+.file-preview {
+    background-color: var(--dark-gray);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.5s ease, box-shadow 0.5s ease, padding 0.3s ease;
+}
+
+.file-preview h4 {
+    margin-top: 0;
+    color: var(--neon-cyan);
+    transition: color 0.3s ease;
+}
+
+.file-preview pre {
+    overflow-x: auto;
+    background-color: #333;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.progress-bar-container {
+    background-color: var(--medium-gray);
+    border-radius: 10px;
+    height: 25px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    transition: background-color 0.3s ease, height 0.3s ease, margin-bottom 0.3s ease;
+}
+
+.progress-bar {
+    background-color: var(--neon-cyan);
+    height: 100%;
+    width: 0%;
+    transition: width 1s ease, background-color 0.5s ease;
+}
+
+.progress-bar.high-risk {
+    background-color: #ff4d4d; /* Red */
+}
+
+.progress-bar.moderate-risk {
+    background-color: #ffcc00; /* Yellow */
+}
+
+.progress-bar.low-risk {
+    background-color: #00cc66; /* Green */
+}
+
+/* Threat Updates Page Styles */
+.threat-updates-container {
+    padding: 2rem;
+    transition: padding 0.3s ease;
+}
+
+.threat-updates-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative; /* For glitch effect */
+    transition: margin-bottom 0.3s ease;
+}
+
+.threat-updates-header h2 {
+    color: var(--neon-cyan);
+    transition: color 0.3s ease;
+}
+
+.threat-updates-header h2.glitch {
+    animation: glitch-effect 2s steps(2, end) infinite;
+}
+
+@keyframes glitch-effect {
+    0% { transform: translate(0); }
+    25% { transform: translate(-2px, 2px); }
+    50% { transform: translate(2px, -2px); }
+    75% { transform: translate(-1px, 1px); }
+    100% { transform: translate(0); }
+}
+
+
+.threat-card {
+    background-color: var(--dark-gray);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.5s ease, box-shadow 0.5s ease, margin-bottom 0.3s ease, opacity 0.5s ease;
+}
+
+.threat-card:last-child {
+    margin-bottom: 0;
+}
+
+.threat-card h3 {
+    margin-top: 0;
+    color: var(--neon-cyan);
+    transition: color 0.3s ease;
+}
+
+.threat-card p {
+    margin-bottom: 1rem;
+    transition: margin-bottom 0.3s ease;
+}
+
+.threat-card .reviewed {
+    opacity: 0.5;
+}
+
+/* Navigation Styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    transition: padding 0.3s ease;
+}
+
+nav h1 {
+    margin: 0;
+    color: var(--neon-cyan);
+    transition: color 0.3s ease;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    transition: align-items 0.3s ease;
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 1rem;
+    transition: width 0.3s ease, height 0.3s ease, margin-left 0.3s ease;
+}
+
+/* Page Transition Styles */
+.page-transition {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.page-transition.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Back to Top Button */
+#back-to-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--deep-blue);
+    color: var(--light-gray);
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+#back-to-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#back-to-top-btn:hover {
+    background-color: var(--neon-cyan);
+    color: var(--dark-bg);
+    transform: scale(1.1);
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 150px;
+    background-color: var(--dark-gray);
+    color: var(--light-gray);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--dark-gray) transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Utility Classes for Animations */
+.fade-in {
+    animation: fade-in-animation 0.5s ease forwards;
+}
+
+@keyframes fade-in-animation {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-out {
+    animation: fade-out-animation 0.5s ease forwards;
+}
+
+@keyframes fade-out-animation {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.loading-animation {
+    border: 5px solid var(--medium-gray);
+    border-top: 5px solid var(--neon-cyan);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Modern Cyber Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');

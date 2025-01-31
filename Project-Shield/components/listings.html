@@ -1,0 +1,116 @@
+<div class="listings-container">
+    <div class="listings-header">
+        <h2>Piracy Reports</h2>
+        <input type="search" id="listings-search" placeholder="Search listings..." class="tooltip">
+            <span class="tooltiptext">Search by file name, website, etc.</span>
+        </input>
+    </div>
+    <table id="piracy-table">
+        <thead>
+            <tr>
+                <th data-sortable="file-name">File Name</th>
+                <th data-sortable="match-percentage">Match %</th>
+                <th data-sortable="website">Website</th>
+                <th data-sortable="date-found">Date Found</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-id="1">
+                <td>example.pdf</td>
+                <td>95%</td>
+                <td>piratebay.com</td>
+                <td>2024-01-20</td>
+                <td><button class="button tooltip">View<span class="tooltiptext">View report details</span></button>
+                    <button class="button" id="generate-takedown-btn">Generate Takedown</button></td>
+            </tr>
+            <tr data-id="2">
+                <td>another-example.mp4</td>
+                <td>88%</td>
+                <td>torrentz.eu</td>
+                <td>2024-01-25</td>
+                 <td><button class="button tooltip">View<span class="tooltiptext">View report details</span></button>
+                     <button class="button">Generate Takedown</button></td>
+            </tr>
+             <tr data-id="3">
+                <td>copyrighted-image.png</td>
+                <td>75%</td>
+                <td>example-forum.net</td>
+                <td>2024-01-28</td>
+                 <td><button class="button tooltip">View<span class="tooltiptext">View report details</span></button>
+                     <button class="button">Generate Takedown</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Takedown Modal -->
+    <div id="takedown-modal" class="modal d-none">
+        <div class="modal-content">
+            <span class="close-button" id="cancel-takedown-btn">&times;</span>
+            <h3>Confirm Takedown</h3>
+            <p>Are you sure you want to generate a takedown request for this listing?</p>
+            <div class="modal-actions">
+                <button id="confirm-takedown-btn" class="button">Confirm Takedown</button>
+                <button id="cancel-takedown-btn" class="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .listings-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .modal {
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        padding-top: 60px;
+    }
+
+    .modal-content {
+        background-color: var(--dark-gray);
+        margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+        border: 1px solid #888;
+        width: 60%; /* Could be more or less, depending on screen size */
+        border-radius: 10px;
+        padding: 20px;
+        position: relative;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4),0 6px 20px 0 rgba(0,0,0,0.3);
+    }
+
+    .close-button {
+        position: absolute;
+        right: 25px;
+        top: 0;
+        color: #aaaaaa;
+        font-size: 30px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+        color: var(--light-gray);
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .modal-actions {
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+    }
+    .d-none {
+        display: none;
+    }
+</style>

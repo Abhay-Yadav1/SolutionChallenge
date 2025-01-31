@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Shield</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <button id="back-to-top-btn" class="tooltip">
+        <span class="tooltiptext">Back to top</span>
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <div id="app">
+        <header id="navbar"></header>
+        <div id="main-container">
+            <aside id="sidebar"></aside>
+            </script>
+<main id="content">
+            </main>
+        </div>
+    </div>
+    <script src="scripts/main.js"></script>
+</body>
+<script>
+    fetch('components/navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            const navbar = document.getElementById('navbar');
+            if (navbar) navbar.innerHTML = data;
+        });
+    fetch('components/sidebar.html')
+        .then(response => response.text())
+        .then(data => {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar) sidebar.innerHTML = data;
+        });
+    fetch('components/dashboard.html')
+        .then(response => response.text())
+        .then(data => {
+            const content = document.getElementById('content');
+            if (content) content.innerHTML = data;
+        });
+</script>
+</html>
