@@ -130,8 +130,8 @@
 }
 
 .feature-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 255, 255, 0.1);
+    transform: translateY(-5px); /* Reduced translateY for subtlety */
+    box-shadow: 0 8px 16px rgba(0, 255, 255, 0.08); /* Reduced shadow intensity */
 }
 
 .feature-card:hover::before {
@@ -181,6 +181,11 @@
     margin-bottom: 1rem;
     position: relative;
     display: inline-block;
+    transition: transform 0.3s ease; /* Smooth transition for transform */
+}
+
+.footer-section:nth-child(1):hover h3 {
+    transform: scale(1.05); /* Scale up slightly on hover */
 }
 
 .footer-section:nth-child(1) h3::after {
@@ -192,30 +197,47 @@
     height: 2px;
     background: linear-gradient(90deg, var(--neon-cyan), var(--magenta), var(--seafoam));
     transform: scaleX(0);
-    transition: transform 0.3s ease;
+    opacity: 0; /* Initially hidden */
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.3s ease; /* More dynamic animation */
     transform-origin: left;
 }
 
 .footer-section:nth-child(1):hover h3::after {
     transform: scaleX(1);
+    opacity: 1; /* Visible on hover */
 }
 
 .footer-section:nth-child(2) h4 {
     color: var(--neon-cyan);
     margin-bottom: 1rem;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Transition text-shadow too */
+}
+
+.footer-section:nth-child(2):hover h4 {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan); /* Neon glow effect on hover */
 }
 
 .footer-section:nth-child(3) h4 {
     color: var(--magenta);
     margin-bottom: 1rem;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Transition text-shadow */
+}
+
+.footer-section:nth-child(3):hover h4 {
+    color: var(--magenta);
+    text-shadow: 0 0 10px var(--magenta); /* Neon glow effect on hover */
 }
 
 .footer-section:nth-child(4) h4 {
     color: var(--seafoam);
     margin-bottom: 1rem;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Transition text-shadow */
+}
+
+.footer-section:nth-child(4):hover h4 {
+    color: var(--seafoam);
+    text-shadow: 0 0 10px var(--seafoam); /* Neon glow effect on hover */
 }
 
 .footer-section ul li a {
@@ -232,16 +254,13 @@
     height: 1px;
     transform: translateX(-100%);
     background: linear-gradient(90deg, var(--neon-cyan), var(--magenta), var(--seafoam));
-    transition: transform 0.3s ease;
-}
-
-.footer-section ul li a:hover {
-    text-decoration: none;
-    color: var(--light-gray);
+    opacity: 0; /* Initially hidden */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Animate opacity */
 }
 
 .footer-section ul li a:hover::after {
     transform: translateX(0);
+    opacity: 1; /* Visible on hover */
 }
 
 .footer-section ul {
@@ -282,14 +301,21 @@
 
 .social-links a:nth-child(1):hover {
     color: var(--neon-cyan);
+    text-shadow: 0 0 5px var(--neon-cyan); /* Neon glow effect */
 }
 
 .social-links a:nth-child(2):hover {
     color: var(--magenta);
+    text-shadow: 0 0 5px var(--magenta); /* Neon glow effect */
 }
 
 .social-links a:nth-child(3):hover {
     color: var(--seafoam);
+    text-shadow: 0 0 5px var(--seafoam); /* Neon glow effect */
+}
+
+.social-links a:hover::after {
+    background: linear-gradient(to right, var(--neon-cyan), var(--magenta), var(--seafoam)); /* Gradient underline */
 }
 
 .social-links a:hover {
@@ -661,7 +687,7 @@ button:active, .button:active {
 
 .stat-card i {
     font-size: 2.5rem;
-    color: var(--neon-cyan);
+    color: var(--light-gray); /* Changed to light-gray for consistency, will inherit color from parent */
     margin-bottom: 0.5rem;
     transition: transform 0.3s ease;
 }
@@ -687,20 +713,17 @@ button:active, .button:active {
 
 .trend.up {
     color: var(--seafoam);
-    background: rgba(185, 242, 185, 0.1);
-    border: 1px solid var(--seafoam);
+    background: rgba(185, 242, 185, 0.15);
 }
 
 .trend.down {
     color: var(--magenta);
-    background: rgba(255, 102, 255, 0.1);
-    border: 1px solid var(--magenta);
+    background: rgba(255, 102, 255, 0.15);
 }
 
 .trend.neutral {
     color: var(--neon-cyan);
-    background: rgba(102, 255, 255, 0.1);
-    border: 1px solid var(--neon-cyan);
+    background: rgba(102, 255, 255, 0.15);
 }
 
 .stat-card:nth-child(1) {
@@ -1119,7 +1142,7 @@ button:active, .button:active {
         display: block;
         overflow-x: auto;
     }
-    
+
     #piracy-table td .button {
         padding: 0.4rem 0.8rem;
         font-size: 0.8rem;
@@ -1480,7 +1503,7 @@ nav h1 {
     .user-name {
         display: none;
     }
-    
+
     .user-profile-btn {
         padding: 0.3rem;
     }
