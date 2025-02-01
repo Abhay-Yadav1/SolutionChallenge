@@ -1,22 +1,22 @@
-<div class="details-container">
+<div class="details-container page-transition">
     <h2>Listing Details</h2>
     <div class="file-preview">
-        <h3>File Preview</h3>
+        <h3><i class="fas fa-file-alt"></i> File Preview</h3>
         <p>This is a placeholder for the file preview.</p>
     </div>
 
     <div class="progress-bar-container tooltip">
         <span class="tooltiptext">Match Score: Risk Level</span>
-        <div class="progress-bar" id="match-score-progress"></div>
+        <div class="progress-bar high-risk" id="match-score-progress" style="width: 95%;"></div>
     </div>
 
     <div class="details">
-        <p><strong>Match Percentage:</strong> <span id="match-percentage-value">95%</span></p>
-        <p><strong>Detected Website:</strong> <span id="website-value">piratebay.com</span></p>
-        <p><strong>Legal Status:</strong> <span id="legal-status-value">Pending</span></p>
+        <p><strong><i class="fas fa-percentage"></i> Match Percentage:</strong> <span id="match-percentage-value">95%</span></p>
+        <p><strong><i class="fas fa-globe"></i> Detected Website:</strong> <span id="website-value">piratebay.com</span></p>
+        <p><strong><i class="fas fa-gavel"></i> Legal Status:</strong> <span id="legal-status-value">Pending</span></p>
     </div>
     <button id="generate-ai-takedown-btn" class="button tooltip">
-        Generate AI Takedown
+        <i class="fas fa-robot"></i> Generate AI Takedown
         <span class="tooltiptext">Generate takedown request using AI</span>
     </button>
 
