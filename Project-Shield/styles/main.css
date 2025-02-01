@@ -1,9 +1,9 @@
 /* Global Styles */
 :root {
     --dark-bg: #000000; /* AMOLED Black */
-    --neon-cyan: #00ffff;
-    --seafoam: #98ff98;
-    --magenta: #ff00ff;
+    --neon-cyan: #66ffff; /* Softened neon cyan */
+    --seafoam: #b9f2b9; /* Softened seafoam */
+    --magenta: #ff66ff; /* Softened magenta */
     --deep-blue: #000033;
     --light-gray: #e0e0e0;
     --medium-gray: #121212; /* Darker Gray */
@@ -20,9 +20,10 @@
     align-items: center;
     justify-content: space-between;
     padding: 6rem 8rem;
-    background: linear-gradient(135deg, var(--deep-blue), var(--dark-bg));
+    background-color: var(--dark-bg); /* Consistent with AMOLED black */
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for hero section */
 }
 
 .hero-content {
@@ -31,7 +32,7 @@
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: 3.2rem; /* Slightly reduced hero heading size */
     margin-bottom: 1.5rem;
     background: linear-gradient(120deg, var(--neon-cyan), var(--seafoam), var(--magenta));
     -webkit-background-clip: text;
@@ -78,7 +79,7 @@
 .features-section {
     padding: 6rem 4rem;
     text-align: center;
-    background: radial-gradient(circle at center, var(--deep-blue) 0%, var(--dark-bg) 100%);
+    background-color: var(--dark-bg); /* Consistent with AMOLED black */
 }
 
 .features-section h2 {
@@ -158,9 +159,10 @@
 
 /* Footer Styles */
 .main-footer {
-    background-color: var(--deep-blue);
+    background-color: var(--dark-bg); /* Consistent with AMOLED black */
     padding: 4rem 2rem 2rem;
     margin-top: auto;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for footer */
 }
 
 .footer-grid {
@@ -247,6 +249,8 @@ body {
     flex-direction: column;
     min-height: 100vh;
     transition: background-color 0.5s ease, color 0.5s ease;
+    font-size: 1.1rem; /* Increased base font size */
+    line-height: 1.7; /* Improved line height for readability */
 }
 
 #app {
@@ -268,23 +272,25 @@ body {
 }
 
 #sidebar {
-    background-color: var(--dark-gray);
-    width: var(--sidebar-width);
+    background-color: var(--dark-bg);
+    width: var(--sidebar-collapsed-width);
     height: 100%;
     padding: 1.5rem;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-    transition: width 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
     overflow-y: auto;
     position: fixed;
     left: 0;
     top: var(--header-height);
     bottom: 0;
-    z-index: 990;
+    z-index: 1000;
 }
 
-#sidebar.collapsed {
-    width: var(--sidebar-collapsed-width);
+#sidebar:hover {
+    width: var(--sidebar-width);
 }
+
+/* Hide text when sidebar is collapsed */
 
 #sidebar ul {
     list-style: none;
@@ -317,15 +323,25 @@ body {
 
 #sidebar li a span {
     transition: opacity 0.3s ease;
+    opacity: 0;
 }
 
-#sidebar.collapsed li a span {
-    opacity: 0;
+#sidebar:hover li a span {
+    opacity: 1;
 }
 
 #sidebar li a:hover {
     background-color: var(--medium-gray);
     color: var(--neon-cyan);
+}
+
+#sidebar li a i {
+    margin: 0 auto;
+    transition: margin 0.3s ease;
+}
+
+#sidebar:hover li a i {
+    margin: 0 1rem 0 0;
 }
 
 #sidebar li a.active {
@@ -338,13 +354,13 @@ body {
 #content {
     flex: 1;
     padding: 2rem;
-    margin-left: var(--sidebar-width);
+    margin-left: var(--sidebar-collapsed-width);
     transition: margin-left 0.3s ease, padding 0.3s ease;
     overflow-y: auto;
 }
 
-#sidebar.collapsed + #content {
-    margin-left: var(--sidebar-collapsed-width);
+#sidebar:hover ~ #content {
+    margin-left: var(--sidebar-width);
 }
 
 /* Component Styles */
@@ -356,16 +372,20 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     #sidebar {
-        transform: translateX(-100%);
+        width: var(--sidebar-collapsed-width);
     }
 
-    #sidebar.show {
-        transform: translateX(0);
+    #sidebar:hover {
+        width: var(--sidebar-width);
     }
 
     #content {
-        margin-left: 0 !important;
+        margin-left: var(--sidebar-collapsed-width);
         padding: 1rem;
+    }
+
+    #sidebar:hover + #content {
+        margin-left: var(--sidebar-width);
     }
 
     nav {
@@ -418,7 +438,7 @@ button:active, .button:active {
     width: 400px;
     margin: 3rem auto;
     padding: 2rem;
-    background-color: var(--dark-gray);
+    background-color: var(--dark-bg); /* Consistent with AMOLED black */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: background-color 0.5s ease, box-shadow 0.5s ease;
@@ -529,7 +549,7 @@ button:active, .button:active {
 }
 
 .stat-card {
-    background-color: var(--dark-gray); /* Dark gray stat card background */
+    background-color: var(--dark-bg); /* Consistent with AMOLED black */
     border: 1px solid var(--medium-gray); /* Darker border */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     padding: 2rem;
@@ -577,7 +597,7 @@ button:active, .button:active {
 }
 
 .alerts li {
-    background-color: var(--medium-gray); /* Darker alert background */
+    background-color: var(--dark-bg); /* Consistent with AMOLED black */
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 8px;
@@ -600,7 +620,7 @@ button:active, .button:active {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
-    background-color: var(--dark-gray);
+    background-color: var(--dark-bg); /* Consistent with AMOLED black */
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -649,7 +669,7 @@ button:active, .button:active {
 }
 
 .modal-content {
-    background-color: var(--dark-gray);
+    background-color: var(--dark-bg); /* Consistent with AMOLED black */
     margin: 5% auto;
     padding: 2rem;
     border-radius: 10px;
@@ -697,7 +717,7 @@ button:active, .button:active {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    background: var(--dark-gray);
+    background-color: var(--dark-bg); /* Consistent with AMOLED black */
     border-radius: 10px;
     overflow: hidden;
     margin-top: 1rem;
@@ -804,7 +824,7 @@ button:active, .button:active {
 }
 
 .file-preview {
-    background-color: var(--dark-gray);
+    background-color: var(--dark-bg); /* Consistent with AMOLED black */
     padding: 2rem;
     border-radius: 12px;
     margin-bottom: 2rem;
@@ -1041,14 +1061,98 @@ nav h1 {
 .user-profile {
     display: flex;
     align-items: center;
+    margin-left: 1rem;
+}
+
+.user-profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: none;
+    border: 2px solid transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative; /* For ripple effect positioning */
+    overflow: hidden; /* Clip ripple effect */
+}
+
+.user-profile-btn:hover {
+    border-color: var(--neon-cyan);
+    background: rgba(0, 255, 255, 0.1);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
+    animation: pulse-glow 1.5s infinite alternate; /* Neon pulse animation */
+}
+
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 5px var(--neon-cyan), 0 0 10px rgba(0, 255, 255, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 15px var(--neon-cyan), 0 0 25px rgba(0, 255, 255, 0.5);
+    }
+}
+
+.user-profile-btn:active {
+    transform: translateY(0);
+    animation: none; /* Disable pulse animation on click */
+}
+
+.user-profile-btn::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 255, 255, 0.3);
+    border-radius: inherit;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(5); /* Increased scale for more pronounced ripple */
+    transition: transform 0.3s, opacity 0.5s;
+}
+
+.user-profile-btn:active::after {
+    transform: scale(0);
+    opacity: 1;
+    transition: transform 0s, opacity 0.5s;
 }
 
 .user-profile img {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    margin-left: 1rem;
-    transition: width 0.3s ease, height 0.3s ease, margin-left 0.3s ease;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.user-profile-btn:hover img {
+    border-color: var(--neon-cyan);
+    transform: rotate(360deg);
+}
+
+.user-name {
+    color: var(--light-gray);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.user-profile-btn:hover .user-name {
+    color: var(--neon-cyan);
+}
+
+@media (max-width: 768px) {
+    .user-name {
+        display: none;
+    }
+    
+    .user-profile-btn {
+        padding: 0.3rem;
+    }
 }
 
 /* Page Transition Styles */
@@ -1161,6 +1265,56 @@ nav h1 {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* Ripple Effect */
+.ripple {
+    position: absolute;
+    background: rgba(0, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 1s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Enhanced Navigation */
+nav {
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+nav h1 {
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+#sidebar-toggle {
+    position: relative;
+    overflow: hidden;
+}
+
+#sidebar-toggle::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--neon-cyan) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#sidebar-toggle:hover::after {
+    opacity: 0.2;
 }
 
 /* Modern Cyber Fonts */
