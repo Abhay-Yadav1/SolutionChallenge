@@ -1,0 +1,63 @@
+<div class="dashboard-container">
+    <h2>Dashboard Overview</h2>
+    <div class="stats">
+        <div class="stat-card" data-tooltip="Total number of reports received">
+            <i class="fas fa-flag"></i>
+            <h3>Total Piracy Reports</h3>
+            <p id="piracy-reports-count">120</p>
+            <span class="trend up">+12% this month</span>
+        </div>
+        <div class="stat-card" data-tooltip="Total matches found across platforms">
+            <i class="fas fa-search"></i>
+            <h3>Matches Found</h3>
+            <p id="matches-count">30</p>
+            <span class="trend neutral">Same as last month</span>
+        </div>
+        <div class="stat-card" data-tooltip="Successfully completed takedowns">
+            <i class="fas fa-check-circle"></i>
+            <h3>Successful Takedowns</h3>
+            <p id="successful-takedowns-count">90</p>
+            <span class="trend up">+5% this month</span>
+        </div>
+    </div>
+    <div class="alerts">
+        <h3>Recent Alerts</h3>
+        <div class="alerts-header">
+            <span>Latest Updates</span>
+            <div class="alerts-filter">
+                <button class="active" data-filter="all">All</button>
+                <button data-filter="high">High Priority</button>
+                <button data-filter="normal">Normal</button>
+            </div>
+        </div>
+        <ul>
+            <li class="high-priority">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div class="alert-content">
+                    <div class="alert-header">
+                        <span class="alert-title">New piracy report detected</span>
+                        <span class="alert-time">2 minutes ago</span>
+                    </div>
+                    <p>File: "example.pdf" found on multiple platforms</p>
+                    <div class="alert-actions">
+                        <button class="button">View Details</button>
+                        <button class="button">Take Action</button>
+                    </div>
+                </div>
+            </li>
+            <li class="normal-priority">
+                <i class="fas fa-bell"></i>
+                <div class="alert-content">
+                    <div class="alert-header">
+                        <span class="alert-title">Takedown request sent</span>
+                        <span class="alert-time">15 minutes ago</span>
+                    </div>
+                    <p>File: "another-example.mp4" - Awaiting response</p>
+                    <div class="alert-actions">
+                        <button class="button">Track Progress</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 /* Global Styles */
 :root {
-    --dark-bg: #000000; /* AMOLED Black */
+    --dark-bg: #1a001a; /* Dark Purple */
     --neon-cyan: #66ffff; /* Softened neon cyan */
     --seafoam: #b9f2b9; /* Softened seafoam */
     --magenta: #ff66ff; /* Softened magenta */
@@ -266,7 +266,7 @@ body {
     flex: 1;
     margin-top: var(--header-height);
     height: calc(100vh - var(--header-height));
-    overflow: hidden;
+    /* overflow: hidden; */
     overflow-x: hidden; /* Added to prevent horizontal overflow */
     position: relative;
 }
@@ -549,20 +549,129 @@ button:active, .button:active {
 }
 
 .stat-card {
-    background-color: var(--dark-bg); /* Consistent with AMOLED black */
-    border: 1px solid var(--medium-gray); /* Darker border */
+    background-color: var(--dark-bg);
+    border: 1px solid var(--medium-gray);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     padding: 2rem;
     border-radius: 10px;
     text-align: center;
-    transition: background-color 0.5s ease, box-shadow 0.5s ease, transform 0.3s ease, border 0.3s ease;
+    transition: all 0.5s ease;
     border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.stat-card i {
+    font-size: 2.5rem;
+    color: var(--neon-cyan);
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover i {
+    transform: scale(1.2) rotate(360deg);
+}
+
+.trend {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    margin-top: 0.5rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover .trend {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.trend.up {
+    color: #00cc66;
+    background: rgba(0, 204, 102, 0.1);
+}
+
+.trend.down {
+    color: #ff4d4d;
+    background: rgba(255, 77, 77, 0.1);
+}
+
+.trend.neutral {
+    color: var(--neon-cyan);
+    background: rgba(102, 255, 255, 0.1);
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid var(--neon-cyan);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.stat-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid var(--neon-cyan);
+    border-radius: 12px;
+    animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+    opacity: 0;
 }
 
 .stat-card:hover {
     transform: scale(1.05);
     border: 2px solid var(--neon-cyan);
     box-shadow: 0 8px 16px rgba(0, 255, 255, 0.3);
+}
+
+.stat-card {
+    position: relative; /* needed for pseudo-element animation */
+    overflow: hidden; /* clip the pseudo-element */
+}
+
+.stat-card:hover::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 10px;
+    border: 2px solid var(--neon-cyan);
+    opacity: 0.6;
+    animation: pulse-ring 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+    pointer-events: none; /* avoid interfering with hover interaction */
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.9);
+        opacity: 0.8;
+    }
 }
 
 .stat-card h3 {
@@ -590,19 +699,141 @@ button:active, .button:active {
     cursor: pointer;
 }
 /* Alerts Styles */
+.alerts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.alerts-filter {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.alerts-filter button {
+    background: var(--dark-bg);
+    border: 1px solid var(--medium-gray);
+    color: var(--light-gray);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.alerts-filter button:hover {
+    background: var(--medium-gray);
+    border-color: var(--neon-cyan);
+}
+
+.alerts-filter button.active {
+    background: var(--neon-cyan);
+    color: var(--dark-bg);
+    border-color: var(--neon-cyan);
+}
+
 .alerts ul {
     list-style: none;
     padding: 0;
-    transition: padding 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .alerts li {
-    background-color: var(--dark-bg); /* Consistent with AMOLED black */
-    padding: 1rem;
+    background-color: var(--dark-bg);
+    padding: 1.5rem;
     margin-bottom: 1rem;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.5s ease, box-shadow 0.5s ease, margin-bottom 0.3s ease;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.alerts li i {
+    color: var(--neon-cyan);
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.alert-content {
+    flex: 1;
+}
+
+.alert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.alert-title {
+    font-weight: 600;
+    color: var(--neon-cyan);
+}
+
+.alert-time {
+    font-size: 0.9rem;
+    color: var(--light-gray);
+    opacity: 0.8;
+}
+
+.alert-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.alerts li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
+    border-left: 4px solid var(--neon-cyan);
+    padding-left: calc(1.5rem - 4px); /* Maintain alignment when border appears */
+}
+
+.alerts li:hover i {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.alerts li:hover .alert-actions {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.alerts li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(102, 255, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.alerts li:hover::after {
+    opacity: 1;
+}
+
+.alert-actions .button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.alerts li.high-priority {
+    border-left: 4px solid #ff4d4d;
+    padding-left: calc(1.5rem - 4px);
+}
+
+.alerts li.normal-priority {
+    border-left: 4px solid var(--neon-cyan);
+    padding-left: calc(1.5rem - 4px);
 }
 
 .alerts li:last-child {
