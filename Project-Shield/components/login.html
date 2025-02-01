@@ -1,72 +1,85 @@
-<div class="login-container">
-    <h2>Login</h2>
-    <form id="login-form">
-        <div class="form-group">
-            <label for="login-email">Email</label>
-            <input type="email" id="login-email" required>
-            <div class="error-message" id="email-error"></div>
-        </div>
-        <div class="form-group password-input-container">
-            <label for="login-password">Password</label>
-            <input type="password" id="login-password" required>
-            <button type="button" class="password-toggle-button">Show</button>
-            <div class="error-message" id="password-error"></div>
-        </div>
-        <button type="submit" class="button">Login</button>
-        <a href="#" class="forgot-password">Forgot Password?</a>
-        <p>Don't have an account? <a href="#" id="login-signup-toggle">Sign Up</a></p>
-    </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Shield - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <button id="back-to-top-btn" class="tooltip">
+        <span class="tooltiptext">Back to top</span>
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <div id="app">
+        <header id="navbar"></header>
+        <div id="main-container">
+            <aside id="sidebar"></aside>
+            <main id="content">
+                <div class="login-container">
+                    <h2>Login</h2>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" required>
+                            <div class="error-message" id="email-error"></div>
+                        </div>
+                        <div class="form-group password-input-container">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" required>
+                            <button type="button" class="password-toggle-button">Show</button>
+                            <div class="error-message" id="password-error"></div>
+                        </div>
+                        <button type="submit" class="button">Login</button>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                        <p>Don't have an account? <a href="#" id="login-signup-toggle">Sign Up</a></p>
+                    </form>
 
-    <div id="signup-form" class="d-none">
-        <h2>Sign Up</h2>
-        <form id="signup-form">
-            <div class="form-group">
-                <label for="signup-email">Email</label>
-                <input type="email" id="signup-email" required>
-            </div>
-            <div class="form-group">
-                <label for="signup-password">Password</label>
-                <div class="password-input-container">
-                    <input type="password" id="signup-password" required>
-                    <button type="button" class="password-toggle-button">Show</button>
+                    <div id="signup-form" class="d-none">
+                        <h2>Sign Up</h2>
+                        <form id="signup-form">
+                            <div class="form-group">
+                                <label for="signup-email">Email</label>
+                                <input type="email" id="signup-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-password">Password</label>
+                                <div class="password-input-container">
+                                    <input type="password" id="signup-password" required>
+                                    <button type="button" class="password-toggle-button">Show</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-password">Confirm Password</label>
+                                <div class="password-input-container">
+                                    <input type="password" id="confirm-password" required>
+                                    <button type="button" class="password-toggle-button">Show</button>
+                                </div>
+                            </div>
+                            <button type="submit" class="button">Sign Up</button>
+                            <p>Already have an account? <a href="#" id="login-signup-toggle">Login</a></p>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="confirm-password">Confirm Password</label>
-                <div class="password-input-container">
-                    <input type="password" id="confirm-password" required>
-                    <button type="button" class="password-toggle-button">Show</button>
-                </div>
-            </div>
-            <button type="submit" class="button">Sign Up</button>
-            <p>Already have an account? <a href="#" id="login-signup-toggle">Login</a></p>
-        </form>
+            </main>
+        </div>
     </div>
-</div>
-
-<style>
-    .d-none {
-        display: none;
-    }
-    .fade-in {
-        animation: fade-in 0.5s forwards;
-    }
-
-    .fade-out {
-        animation: fade-out 0.5s forwards;
-    }
-
-    @keyframes fade-in {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fade-out {
-        from { opacity: 1; transform: translateY(0px); }
-        to { opacity: 0; transform: translateY(10px); }
-    }
-    .input-glow {
-        box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.3);
-        border-color: var(--neon-cyan) !important;
-    }
-</style>
+    <script src="../scripts/main.js"></script>
+    <script>
+        fetch('../components/navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                const navbar = document.getElementById('navbar');
+                if (navbar) navbar.innerHTML = data;
+            });
+        fetch('../components/sidebar.html')
+            .then(response => response.text())
+            .then(data => {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) sidebar.innerHTML = data;
+            });
+    </script>
+</body>
+</html>
