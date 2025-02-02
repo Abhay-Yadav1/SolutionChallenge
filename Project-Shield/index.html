@@ -148,25 +148,6 @@
                 const navbar = document.getElementById('navbar');
                 if (navbar) navbar.innerHTML = data;
             });
-
-
-
-
-
-
-        fetch('components/home.html')
-            .then(response => response.text())
-            .then(data => {
-                const content = document.getElementById('content');
-                if (content) content.innerHTML = data;
-            })
-            .then(() => {
-                // Initialize features after content is loaded
-                if (typeof initializeSearch === 'function') initializeSearch();
-                if (typeof initializeReportModal === 'function') initializeReportModal();
-                if (typeof initializeDashboard === 'function') initializeDashboard();
-                if (typeof initializeCharts === 'function') initializeCharts();
-            });
     </script>
 </body>
 </html>

@@ -10,6 +10,51 @@ Chart.defaults.plugins.tooltip.bodyColor = '#e0e0e0'; // var(--light-gray)
 Chart.defaults.plugins.tooltip.padding = 10;
 Chart.defaults.plugins.legend.labels.color = '#e0e0e0'; // var(--light-gray)
 
+// Initialize Details Page
+const initializeDetailsPage = () => {
+    console.log('Initializing details page...'); // Debug log
+    const detailsContainer = document.querySelector('.details-container');
+    if (detailsContainer) {
+        console.log('Details container found'); // Debug log
+        // Add page transition effect
+        detailsContainer.classList.add('page-transition');
+        detailsContainer.classList.add('active');
+
+        // Initialize AI Takedown Modal
+        const aiTakedownBtn = document.getElementById('generate-ai-takedown-btn');
+        const aiTakedownModal = document.getElementById('ai-takedown-modal');
+        const closeBtn = document.getElementById('cancel-ai-takedown-btn-modal');
+        const cancelBtn = document.getElementById('cancel-ai-takedown-btn-modal2');
+        const confirmBtn = document.getElementById('confirm-ai-takedown-btn');
+
+        if (aiTakedownBtn && aiTakedownModal) {
+            console.log('AI Takedown elements found'); // Debug log
+            aiTakedownBtn.addEventListener('click', () => {
+                aiTakedownModal.classList.remove('d-none');
+            });
+
+            closeBtn.addEventListener('click', () => {
+                aiTakedownModal.classList.add('d-none');
+            });
+
+            cancelBtn.addEventListener('click', () => {
+                aiTakedownModal.classList.add('d-none');
+            });
+
+            confirmBtn.addEventListener('click', () => {
+                // Handle AI takedown generation
+                console.log('Generating AI takedown...');
+                aiTakedownModal.classList.add('d-none');
+                // Add your AI takedown generation logic here
+            });
+        } else {
+            console.log('AI Takedown elements not found'); // Debug log
+        }
+    } else {
+        console.log('Details container not found'); // Debug log
+    }
+};
+
 // Search Functionality
 const initializeSearch = () => {
     const searchInput = document.getElementById('content-search');
@@ -59,6 +104,7 @@ const initializeReportModal = () => {
     const form = document.getElementById('violation-report-form');
 
     const toggleModal = (show = true) => {
+        if (!modal) return;
         modal.style.display = show ? 'flex' : 'none';
         if (show) {
             modal.classList.add('show');
@@ -249,6 +295,10 @@ const initializeCharts = () => {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Run page-specific initializations first
+    initializeDetailsPage();
+    
+    // Then run common initializations
     initializeSearch();
     initializeReportModal();
     initializeDashboard();
