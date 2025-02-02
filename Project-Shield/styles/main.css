@@ -1770,6 +1770,34 @@ nav {
     gap: 1rem;
 }
 
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li a {
+    color: var(--light-gray);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    background-color: var(--dark-gray);
+}
+
+.nav-links li a i {
+    font-size: 1.2rem;
+}
+
 nav h1 {
     margin: 0;
     color: var(--neon-cyan);
