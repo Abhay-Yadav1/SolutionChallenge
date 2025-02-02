@@ -23,41 +23,47 @@
             </div>
 
             <div class="takedowns-list">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Request ID</th>
-                            <th>Infringing Content URL</th>
-                            <th>Status</th>
-                            <th>Date Generated</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Placeholder for takedown request items -->
-                        <tr>
-                            <td>#TK001</td>
-                            <td><a href="#">https://example.com/infringing-content-1</a></td>
-                            <td>Pending</td>
-                            <td>2025-02-02</td>
-                            <td><button class="button secondary magenta small">View Details</button> <!-- Magenta button --></td>
-                        </tr>
-                        <tr>
-                            <td>#TK002</td>
-                            <td><a href="#">https://example.com/infringing-content-2</a></td>
-                            <td>Sent</td>
-                            <td>2025-02-01</td>
-                            <td><button class="button secondary magenta small">View Details</button> <!-- Magenta button --></td>
-                        </tr>
-                        <tr>
-                            <td>#TK003</td>
-                            <td><a href="#">https://example.com/infringing-content-3</a></td>
-                            <td>Resolved</td>
-                            <td>2025-01-30</td>
-                            <td><button class="button secondary magenta small">View Details</button> <!-- Magenta button --></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="takedown-tile fade-in">
+                    <div class="takedown-tile-header">
+                        <span class="request-id">#TK001</span>
+                        <span class="status pending"><i class="fas fa-hourglass-half"></i> Pending</span>
+                    </div>
+                    <div class="takedown-tile-body">
+                        <p><strong>URL:</strong> <a href="#">https://example.com/infringing-content-1</a></p>
+                        <p><strong>Date:</strong> 2025-02-02</p>
+                    </div>
+                    <div class="takedown-tile-actions">
+                        <button class="button secondary magenta small">View Details</button>
+                    </div>
+                </div>
+
+                <div class="takedown-tile fade-in">
+                    <div class="takedown-tile-header">
+                        <span class="request-id">#TK002</span>
+                        <span class="status sent"><i class="fas fa-paper-plane"></i> Sent</span>
+                    </div>
+                    <div class="takedown-tile-body">
+                        <p><strong>URL:</strong> <a href="#">https://example.com/infringing-content-2</a></p>
+                        <p><strong>Date:</strong> 2025-02-01</p>
+                    </div>
+                    <div class="takedown-tile-actions">
+                        <button class="button secondary magenta small">View Details</button>
+                    </div>
+                </div>
+
+                <div class="takedown-tile fade-in">
+                    <div class="takedown-tile-header">
+                        <span class="request-id">#TK003</span>
+                        <span class="status resolved"><i class="fas fa-check-circle"></i> Resolved</span>
+                    </div>
+                    <div class="takedown-tile-body">
+                        <p><strong>URL:</strong> <a href="#">https://example.com/infringing-content-3</a></p>
+                        <p><strong>Date:</strong> 2025-01-30</p>
+                    </div>
+                    <div class="takedown-tile-actions">
+                        <button class="button secondary magenta small">View Details</button>
+                    </div>
+                </div>
             </div>
         </section>
     </div>

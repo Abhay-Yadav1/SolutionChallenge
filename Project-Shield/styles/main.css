@@ -556,33 +556,6 @@ body {
     position: relative;
 }
 
-
-
-
-
-/* Hide text when sidebar is collapsed */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #content {
     flex: 1;
     padding: 2rem;
@@ -602,6 +575,7 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     
+
 
     
 
@@ -1992,8 +1966,6 @@ nav h1 {
 
 
 
-
-
 /* Modern Cyber Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -2160,6 +2132,7 @@ nav h1 {
 .refresh-btn {
     display: flex;
     align-items: center;
+
 
 /* Hero Section Alignment and Hover Effects */
 .hero-section {
@@ -2540,5 +2513,184 @@ nav h1 {
     .modal-content {
         width: 95%;
         padding: 1.5rem;
+    }
+}
+
+/* Takedowns Section Styles */
+.takedowns-section {
+    padding: 2rem;
+    background-color: var(--dark-bg);
+    margin-top: 6rem; /* Increased top margin to add space below navbar */
+}
+
+.takedowns-section h1 {
+    color: var(--neon-cyan);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.takedowns-section h1:hover {
+    color: var(--seafoam);
+    transform: scale(1.05);
+    text-shadow: 0 0 15px var(--seafoam);
+}
+
+
+.takedowns-section p {
+    color: var(--light-gray);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.takedowns-actions {
+    text-align: right;
+    margin-bottom: 2rem;
+}
+
+.takedowns-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.takedown-tile {
+    background-color: var(--dark-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    border: 1px solid var(--medium-gray);
+    background-size: 200% auto;
+    background-image: linear-gradient(to right, var(--dark-gray) 0%, var(--dark-bg) 50%, var(--dark-gray) 100%);
+    animation: gradientBackground 5s linear infinite;
+    overflow: hidden;
+    position: relative;
+}
+
+.takedown-tile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--seafoam), var(--magenta));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.takedown-tile:hover::before {
+    transform: scaleX(1);
+}
+
+.takedown-tile:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(102, 255, 255, 0.3);
+    border-color: var(--neon-cyan);
+    animation-play-state: paused;
+    transition: all 0.3s ease, border-color 0.3s ease;
+    border: 1px solid var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    animation-play-state: paused;
+    border-image: linear-gradient(to right, var(--neon-cyan), transparent);
+    border-image-slice: 1;
+    animation: border-glow 1s linear infinite alternate;
+}
+
+@keyframes border-glow {
+    0% {
+        border-image-source: linear-gradient(to right, var(--neon-cyan), transparent);
+        
+    }
+    100% {
+        border-image-source: linear-gradient(to right, transparent, var(--neon-cyan));
+    }
+}
+
+
+.takedown-tile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--medium-gray);
+}
+
+.takedown-tile-header .request-id {
+    color: var(--light-gray);
+    font-size: 1.2rem;
+}
+
+.takedown-tile-header .status {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    color: var(--light-gray);
+}
+
+.takedown-tile-header .status.pending {
+    background-color: rgba(255, 204, 0, 0.15);
+    color: var(--neon-cyan);
+    border: 1px solid var(--neon-cyan);
+}
+
+.takedown-tile-header .status.sent {
+    background-color: rgba(102, 255, 255, 0.15);
+    color: var(--seafoam);
+    border: 1px solid var(--seafoam);
+}
+
+.takedown-tile-header .status.resolved {
+    background-color: rgba(0, 204, 102, 0.15);
+    color: var(--magenta);
+    border: 1px solid var(--magenta);
+}
+
+.takedown-tile-header .status.pending i,
+.takedown-tile-header .status.sent i,
+.takedown-tile-header .status.resolved i {
+    margin-right: 0.5rem;
+}
+
+
+.takedown-tile-body {
+    margin-bottom: 1rem;
+}
+
+.takedown-tile-body p {
+    color: var(--light-gray);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.takedown-tile-body p strong {
+    color: var(--neon-cyan);
+    margin-right: 0.5rem;
+}
+
+.takedown-tile-body a {
+    color: var(--seafoam);
+}
+
+.takedown-tile-actions {
+    text-align: right;
+}
+
+/* Responsive adjustments for takedowns section */
+@media (max-width: 768px) {
+    .takedowns-section {
+        padding: 1rem;
+    }
+
+    .takedowns-actions {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .takedowns-list {
+        grid-template-columns: 1fr;
     }
 }
