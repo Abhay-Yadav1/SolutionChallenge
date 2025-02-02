@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takedown Requests - Project Shield</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-theme"> <!-- Apply dark theme class -->
+    <header id="navbar"></header>
+
+    <div class="container">
+        <section class="takedowns-section fade-in">
+            <h1>Takedown Requests</h1>
+            <p>Generate and manage takedown requests for confirmed IP violations.</p>
+
+            <div class="takedowns-actions">
+                <button class="button primary seafoam"> <!-- Seafoam button -->
+                    <span class="button-text">Generate New Request</span>
+                    <i class="fas fa-plus-circle"></i>
+                </button>
+            </div>
+
+            <div class="takedowns-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Infringing Content URL</th>
+                            <th>Status</th>
+                            <th>Date Generated</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Placeholder for takedown request items -->
+                        <tr>
+                            <td>#TK001</td>
+                            <td><a href="#">https://example.com/infringing-content-1</a></td>
+                            <td>Pending</td>
+                            <td>2025-02-02</td>
+                            <td><button class="button secondary magenta small">View Details</button> <!-- Magenta button --></td>
+                        </tr>
+                        <tr>
+                            <td>#TK002</td>
+                            <td><a href="#">https://example.com/infringing-content-2</a></td>
+                            <td>Sent</td>
+                            <td>2025-02-01</td>
+                            <td><button class="button secondary magenta small">View Details</button> <!-- Magenta button --></td>
+                        </tr>
+                        <tr>
+                            <td>#TK003</td>
+                            <td><a href="#">https://example.com/infringing-content-3</a></td>
+                            <td>Resolved</td>
+                            <td>2025-01-30</td>
+                            <td><button class="button secondary magenta small">View Details</button> <!-- Magenta button --></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <footer class="main-footer"></footer>
+
+    <script src="../scripts/main.js"></script>
+    <script>
+        fetch('../components/navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                const navbar = document.getElementById('navbar');
+                if (navbar) navbar.innerHTML = data;
+            });
+    </script>
+</body>
+</html>
