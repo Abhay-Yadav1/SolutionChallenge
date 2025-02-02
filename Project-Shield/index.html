@@ -105,36 +105,38 @@
             </div>
         </footer>
     </div>
+
+    <!-- Third-party Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Application Scripts -->
     <script src="scripts/main.js"></script>
+    <script>
+        fetch('components/navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                const navbar = document.getElementById('navbar');
+                if (navbar) navbar.innerHTML = data;
+            });
+        fetch('components/sidebar.html')
+            .then(response => response.text())
+            .then(data => {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) sidebar.innerHTML = data;
+            });
+        fetch('components/home.html')
+            .then(response => response.text())
+            .then(data => {
+                const content = document.getElementById('content');
+                if (content) content.innerHTML = data;
+            })
+            .then(() => {
+                // Initialize features after content is loaded
+                if (typeof initializeSearch === 'function') initializeSearch();
+                if (typeof initializeReportModal === 'function') initializeReportModal();
+                if (typeof initializeDashboard === 'function') initializeDashboard();
+                if (typeof initializeCharts === 'function') initializeCharts();
+            });
+    </script>
 </body>
-<script>
-    fetch('components/navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            const navbar = document.getElementById('navbar');
-            if (navbar) navbar.innerHTML = data;
-        });
-    fetch('components/sidebar.html')
-        .then(response => response.text())
-        .then(data => {
-            const sidebar = document.getElementById('sidebar');
-            if (sidebar) sidebar.innerHTML = data;
-        });
-    fetch('components/home.html')
-        .then(response => response.text())
-        .then(data => {
-            const content = document.getElementById('content');
-            if (content) content.innerHTML = data;
-        });
-    fetch('components/details.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('details-container').innerHTML = data;
-        });
-    fetch('components/login.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('login-container').innerHTML = data;
-        });
-</script>
 </html>

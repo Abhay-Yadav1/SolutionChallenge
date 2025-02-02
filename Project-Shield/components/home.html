@@ -1,5 +1,53 @@
+<div class="search-container">
+    <div class="search-header">
+        <h2>Search for Pirated Content</h2>
+        <p>Enter keywords or URLs to scan across the internet for potential IP violations</p>
+    </div>
+    <div class="search-box">
+        <div class="search-input-wrapper">
+            <i class="fas fa-search"></i>
+            <input type="text" id="content-search" placeholder="Enter keywords, titles, or URLs to search...">
+            <button class="search-button" id="search-trigger">Search</button>
+        </div>
+        <div class="search-filters">
+            <select id="content-type">
+                <option value="all">All Types</option>
+                <option value="text">Text Content</option>
+                <option value="image">Images</option>
+                <option value="video">Videos</option>
+                <option value="audio">Audio</option>
+            </select>
+            <select id="time-range">
+                <option value="all">Any Time</option>
+                <option value="day">Past 24 Hours</option>
+                <option value="week">Past Week</option>
+                <option value="month">Past Month</option>
+            </select>
+            <select id="similarity">
+                <option value="75">75%+ Similar</option>
+                <option value="85">85%+ Similar</option>
+                <option value="95">95%+ Similar</option>
+            </select>
+        </div>
+    </div>
+</div>
+
 <div class="dashboard-container">
-    <h2>Dashboard Overview</h2>
+    <div class="dashboard-header">
+        <h2>Real-Time Dashboard</h2>
+        <div class="dashboard-controls">
+            <button class="refresh-btn" id="refresh-dashboard">
+                <i class="fas fa-sync-alt"></i> Refresh Data
+            </button>
+            <select id="dashboard-timeframe">
+                <option value="1h">Last Hour</option>
+                <option value="24h">Last 24 Hours</option>
+                <option value="7d">Last 7 Days</option>
+                <option value="30d">Last 30 Days</option>
+            </select>
+        </div>
+    </div>
+
     <div class="stats">
         <div class="stat-card" data-tooltip="Total number of reports received">
             <i class="fas fa-flag"></i>
@@ -20,6 +68,16 @@
             <span class="trend up">+5% this month</span>
         </div>
     </div>
+
+    <div class="data-visualization">
+        <div class="chart-container">
+            <canvas id="detection-trends"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="platform-distribution"></canvas>
+        </div>
+    </div>
+
     <div class="alerts">
         <h3>Recent Alerts</h3>
         <div class="alerts-header">
@@ -30,7 +88,7 @@
                 <button data-filter="normal">Normal</button>
             </div>
         </div>
-        <ul>
+        <ul id="alerts-list">
             <li class="high-priority">
                 <i class="fas fa-exclamation-triangle"></i>
                 <div class="alert-content">
@@ -40,8 +98,8 @@
                     </div>
                     <p>File: "example.pdf" found on multiple platforms</p>
                     <div class="alert-actions">
+                        <button class="button" id="report-violation">Report Violation</button>
                         <button class="button">View Details</button>
-                        <button class="button">Take Action</button>
                     </div>
                 </div>
             </li>
@@ -59,5 +117,48 @@
                 </div>
             </li>
         </ul>
+    </div>
+</div>
+
+<!-- Report Violation Modal -->
+<div id="report-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Report Copyright Violation</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="violation-report-form">
+                <div class="form-group">
+                    <label for="content-title">Content Title</label>
+                    <input type="text" id="content-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="violation-type">Type of Violation</label>
+                    <select id="violation-type" required>
+                        <option value="">Select type...</option>
+                        <option value="copyright">Copyright Infringement</option>
+                        <option value="trademark">Trademark Violation</option>
+                        <option value="patent">Patent Infringement</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="violation-url">URL of Violation</label>
+                    <input type="url" id="violation-url" required>
+                </div>
+                <div class="form-group">
+                    <label for="evidence-upload">Upload Evidence</label>
+                    <input type="file" id="evidence-upload" multiple>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" rows="4" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="button secondary" id="cancel-report">Cancel</button>
+                    <button type="submit" class="button primary">Submit Report</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
