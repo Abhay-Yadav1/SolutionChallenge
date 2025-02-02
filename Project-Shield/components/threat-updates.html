@@ -16,7 +16,6 @@
     <div id="app">
         <header id="navbar"></header>
         <div id="main-container">
-            <aside id="sidebar"></aside>
             <main id="content">
                 <div class="threat-updates-container" id="threat-updates-page">
                     <div class="threat-updates-header">
@@ -49,12 +48,6 @@
             .then(data => {
                 const navbar = document.getElementById('navbar');
                 if (navbar) navbar.innerHTML = data;
-            });
-        fetch('../components/sidebar.html')
-            .then(response => response.text())
-            .then(data => {
-                const sidebar = document.getElementById('sidebar');
-                if (sidebar) sidebar.innerHTML = data;
             });
     </script>
 </body>
