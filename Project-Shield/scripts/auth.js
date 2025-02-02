@@ -7,8 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            loginForm.classList.toggle('d-none');
-            signupFormContainer.classList.toggle('d-none');
+            if (loginForm.classList.contains('d-none')) {
+                loginForm.classList.remove('d-none');
+                signupFormContainer.classList.add('d-none');
+            } else {
+                loginForm.classList.add('d-none');
+                signupFormContainer.classList.remove('d-none');
+            }
         });
     });
 

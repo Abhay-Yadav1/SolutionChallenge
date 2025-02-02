@@ -93,7 +93,6 @@
         <div class="section-divider"></div>
 
         <div id="main-container">
-            <aside id="sidebar"></aside>
             <main id="content"></main>
         </div>
 
@@ -149,12 +148,12 @@
                 const navbar = document.getElementById('navbar');
                 if (navbar) navbar.innerHTML = data;
             });
-        fetch('components/sidebar.html')
-            .then(response => response.text())
-            .then(data => {
-                const sidebar = document.getElementById('sidebar');
-                if (sidebar) sidebar.innerHTML = data;
-            });
+
+
+
+
+
+
         fetch('components/home.html')
             .then(response => response.text())
             .then(data => {

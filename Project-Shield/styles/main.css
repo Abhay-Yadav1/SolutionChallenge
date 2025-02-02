@@ -556,86 +556,6 @@ body {
     position: relative;
 }
 
-#sidebar {
-    background-color: var(--dark-bg);
-    width: var(--sidebar-collapsed-width);
-    height: 100%;
-    padding: 1.5rem;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    overflow-y: auto;
-    position: fixed;
-    left: 0;
-    top: var(--header-height);
-    bottom: 0;
-    z-index: 1000;
-}
-
-#sidebar:hover {
-    width: var(--sidebar-width);
-}
-
-/* Hide text when sidebar is collapsed */
-
-#sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-#sidebar li {
-    margin-bottom: 0.5rem;
-}
-
-#sidebar li a {
-    display: flex;
-    align-items: center;
-    padding: 0.8rem 1rem;
-    color: var(--light-gray);
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    white-space: nowrap;
-}
-
-#sidebar li a i {
-    width: 24px;
-    font-size: 1.2rem;
-    margin-right: 1rem;
-    color: var(--neon-cyan);
-    transition: margin-right 0.3s ease;
-}
-
-#sidebar li a span {
-    transition: opacity 0.3s ease;
-    opacity: 0;
-}
-
-#sidebar:hover li a span {
-    opacity: 1;
-}
-
-#sidebar li a:hover {
-    background-color: var(--medium-gray);
-    color: var(--neon-cyan);
-}
-
-#sidebar li a i {
-    margin: 0 auto;
-    transition: margin 0.3s ease;
-}
-
-#sidebar:hover li a i {
-    margin: 0 1rem 0 0;
-}
-
-#sidebar li a.active {
-    background-color: var(--medium-gray);
-    color: var(--neon-cyan);
-    border-left: 4px solid var(--neon-cyan);
-}
-
-
 #content {
     flex: 1;
     padding: 2rem;
@@ -644,9 +564,7 @@ body {
     overflow-y: auto;
 }
 
-#sidebar:hover ~ #content {
-    margin-left: var(--sidebar-width);
-}
+
 
 /* Component Styles */
 .dashboard-container, .listings-container, .threat-updates-container, .details-container {
@@ -656,22 +574,17 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    #sidebar {
-        width: var(--sidebar-collapsed-width);
-    }
+    
 
-    #sidebar:hover {
-        width: var(--sidebar-width);
-    }
+
+    
 
     #content {
         margin-left: var(--sidebar-collapsed-width);
         padding: 1rem;
     }
 
-    #sidebar:hover + #content {
-        margin-left: var(--sidebar-width);
-    }
+    
 
     nav {
         padding: 0 1rem;
@@ -720,8 +633,8 @@ button:active, .button:active {
 
 /* Form Styles */
 .login-container {
-    width: 400px;
-    margin: 3rem auto;
+    width: 450px; /* Increased width */
+    margin: 5rem auto; /* Increased top margin for vertical centering */
     padding: 2.5rem;
     background-color: var(--dark-bg);
     border-radius: 15px;
@@ -729,7 +642,10 @@ button:active, .button:active {
     transition: all 0.5s ease;
     border: 1px solid var(--medium-gray);
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Ensure overflow is hidden */
+    display: flex; /* Use flexbox for centering content */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center content horizontally */
 }
 
 .login-container::before {
@@ -934,7 +850,7 @@ button:active, .button:active {
 
 /* Dashboard Styles */
 .dashboard-container {
-    padding: 2rem;
+    padding: 1rem;
     transition: padding 0.3s ease;
     background-color: var(--dark-bg); /* AMOLED background */
 }
@@ -952,7 +868,7 @@ button:active, .button:active {
     background-color: var(--dark-bg);
     border: 1px solid var(--medium-gray);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 10px;
     text-align: center;
     transition: all 0.5s ease;
@@ -1287,40 +1203,52 @@ button:active, .button:active {
 }
 
 .listings-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    text-align: center;
     margin-bottom: 2rem;
-    background-color: var(--dark-bg);
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--medium-gray);
     position: relative;
-    overflow: hidden;
-}
-
-.listings-header::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
-    animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
 }
 
 .listings-header h2 {
-    color: var(--neon-cyan);
+    color: var(--seafoam);
     margin: 0;
-    font-size: 1.8rem;
-    text-shadow: 0 0 10px rgba(102, 255, 255, 0.5);
+    font-size: 2.2rem;
+    transition: all 0.3s ease;
+}
+
+.listings-header h2:hover {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.search-wrapper {
+    margin-bottom: 2rem;
+}
+
+.search-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    background: var(--dark-gray);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--medium-gray);
+    transition: all 0.3s ease;
+}
+
+.search-container:hover {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 15px rgba(102, 255, 255, 0.1);
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+    border: 2px solid var(--medium-gray);
+    background-color: var(--medium-gray);
+    color: var(--light-gray);
+    transition: all 0.3s ease;
+    font-size: 1rem;
 }
 
 .search-container {
@@ -1336,13 +1264,15 @@ button:active, .button:active {
     background-color: var(--medium-gray);
     color: var(--light-gray);
     transition: all 0.3s ease;
+    padding: 1rem 1.2rem; /* Increased padding */
 }
 
 .search-input:focus {
     outline: none;
-    border-color: var(--neon-cyan);
-    box-shadow: 0 0 20px rgba(102, 255, 255, 0.2);
+    border-color: var(--seafoam);
+    box-shadow: 0 0 10px rgba(185, 242, 185, 0.2); /* More subtle seafoam glow */
     background-color: var(--dark-gray);
+    background-color: rgba(102, 255, 255, 0.05); /* Subtle background highlight on focus */
 }
 
 /* Modal Styles */
@@ -1455,7 +1385,7 @@ button:active, .button:active {
 
 #piracy-table th:hover::after {
     opacity: 1;
-    color: var(--neon-cyan);
+    color: var (--neon-cyan);
     text-shadow: 0 0 10px rgba(102, 255, 255, 0.5);
 }
 
@@ -1463,12 +1393,13 @@ button:active, .button:active {
     transition: all 0.3s ease;
     border-left: 4px solid transparent;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition for background-color and transform */
 }
 
 #piracy-table tbody tr:hover {
-    background-color: rgba(102, 255, 255, 0.05);
+    background-color: rgba(102, 255, 255, 0.1); /* Slightly stronger highlight */
     border-left: 4px solid var(--neon-cyan);
-    transform: translateX(5px);
+    transform: translateX(5px) scale(1.01); /* Add scale for subtle tile animation */
 }
 
 #piracy-table tbody tr td {
@@ -1619,33 +1550,25 @@ button:active, .button:active {
     margin-bottom: 3rem;
     position: relative;
     padding: 2rem;
-    background: var(--dark-gray);
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .threat-updates-header h2 {
-    color: var(--neon-cyan);
+    color: var(--magenta);
     font-size: 2.2rem;
     margin: 0;
-    text-transform: uppercase;
+    text-transform: none;
     letter-spacing: 2px;
     position: relative;
     display: inline-block;
+    transition: all 0.3s ease;
 }
 
-.threat-updates-header h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+.threat-updates-header h2:hover {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan);
 }
 
-.threat-updates-header h2.glitch {
+.threat-updates-header h2.glitch:hover {
     animation: glitch-effect 3s infinite;
     text-shadow: 0 0 10px var(--neon-cyan);
 }
@@ -1701,7 +1624,7 @@ button:active, .button:active {
 
 .threat-card p {
     margin-bottom: 1rem;
-    color: var(--light-gray);
+    color: var (--light-gray);
     display: flex;
     align-items: center;
 }
@@ -1770,6 +1693,34 @@ nav {
     gap: 1rem;
 }
 
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li a {
+    color: var(--light-gray);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    background-color: var(--dark-gray);
+}
+
+.nav-links li a i {
+    font-size: 1.2rem;
+}
+
 nav h1 {
     margin: 0;
     color: var(--neon-cyan);
@@ -1777,22 +1728,9 @@ nav h1 {
     transition: color 0.3s ease;
 }
 
-#sidebar-toggle {
-    background: none;
-    border: none;
-    color: var(--light-gray);
-    cursor: pointer;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
 
-#sidebar-toggle:hover {
-    color: var(--neon-cyan);
-    transform: scale(1.1);
-}
+
+
 
 .user-profile {
     display: flex;
@@ -1940,7 +1878,7 @@ nav h1 {
     visibility: hidden;
     width: 150px;
     background-color: var(--dark-gray);
-    color: var(--light-gray);
+    color: var (--light-gray);
     text-align: center;
     border-radius: 6px;
     padding: 5px;
@@ -2034,24 +1972,9 @@ nav h1 {
     text-shadow: 0 0 10px var(--neon-cyan);
 }
 
-#sidebar-toggle {
-    position: relative;
-    overflow: hidden;
-}
 
-#sidebar-toggle::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, var(--neon-cyan) 0%, transparent 70%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
 
-#sidebar-toggle:hover::after {
-    opacity: 0.2;
-}
+
 
 /* Modern Cyber Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -2219,6 +2142,7 @@ nav h1 {
 .refresh-btn {
     display: flex;
     align-items: center;
+
 
 /* Hero Section Alignment and Hover Effects */
 .hero-section {
@@ -2481,7 +2405,7 @@ nav h1 {
 
 .refresh-btn:hover {
     background: var(--neon-cyan);
-    color: var(--dark-bg);
+    color: var (--dark-bg);
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(102, 255, 255, 0.3);
 }
@@ -2495,21 +2419,26 @@ nav h1 {
 }
 
 .data-visualization {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin: 2rem 0;
+    display: flex;
+    flex-direction: row; /* Make charts side-by-side */
+    gap: 0.5rem; /* Reduce gap between charts */
+    margin: 0; /* Remove margin */
 }
 
 .chart-container {
     background: var(--dark-bg);
-    padding: 1.5rem;
+    padding: 0rem;
     border-radius: 12px;
     border: 1px solid var(--medium-gray);
-    min-height: 300px;
+    min-height: 150px; /* Further reduce min-height */
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    width: 60%; /* Take up more width for the graph */
+}
+
+.chart-container:nth-child(2) {
+    width: 35%; /* Make the pie chart container smaller */
 }
 
 .chart-container::before {
@@ -2532,6 +2461,20 @@ nav h1 {
     border-color: var(--neon-cyan);
     box-shadow: 0 4px 15px rgba(102, 255, 255, 0.1);
     transform: translateY(-2px);
+}
+
+/* Unified Heading Styles */
+.section-heading {
+    color: var(--neon-cyan);
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.section-heading:hover {
+    color: var(--seafoam);
+    text-shadow: 0 0 15px var(--seafoam);
 }
 
 /* Chart.js Customization */
@@ -2599,5 +2542,185 @@ nav h1 {
     .modal-content {
         width: 95%;
         padding: 1.5rem;
+    }
+}
+
+/* Takedowns Section Styles */
+.takedowns-section {
+    padding: 2rem;
+    background-color: var(--dark-bg);
+    margin-top: 6rem; /* Increased top margin to add space below navbar */
+}
+
+.takedowns-section h1 {
+    color: var(--neon-cyan);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+    font-size: 2.2rem; /* Match the font size with other page headings */
+}
+
+.takedowns-section h1:hover {
+    color: var(--seafoam);
+    transform: scale(1.05);
+    text-shadow: 0 0 15px var(--seafoam);
+}
+
+
+.takedowns-section p {
+    color: var(--light-gray);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.takedowns-actions {
+    text-align: right;
+    margin-bottom: 2rem;
+}
+
+.takedowns-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.takedown-tile {
+    background-color: var(--dark-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    border: 1px solid var(--medium-gray);
+    background-size: 200% auto;
+    background-image: linear-gradient(to right, var(--dark-gray) 0%, var(--dark-bg) 50%, var(--dark-gray) 100%);
+    animation: gradientBackground 5s linear infinite;
+    overflow: hidden;
+    position: relative;
+}
+
+.takedown-tile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--seafoam), var(--magenta));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.takedown-tile:hover::before {
+    transform: scaleX(1);
+}
+
+.takedown-tile:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(102, 255, 255, 0.3);
+    border-color: var(--neon-cyan);
+    animation-play-state: paused;
+    transition: all 0.3s ease, border-color 0.3s ease;
+    border: 1px solid var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    animation-play-state: paused;
+    border-image: linear-gradient(to right, var(--neon-cyan), transparent);
+    border-image-slice: 1;
+    animation: border-glow 1s linear infinite alternate;
+}
+
+@keyframes border-glow {
+    0% {
+        border-image-source: linear-gradient(to right, var(--neon-cyan), transparent);
+        
+    }
+    100% {
+        border-image-source: linear-gradient(to right, transparent, var(--neon-cyan));
+    }
+}
+
+
+.takedown-tile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var (--medium-gray);
+}
+
+.takedown-tile-header .request-id {
+    color: var(--light-gray);
+    font-size: 1.2rem;
+}
+
+.takedown-tile-header .status {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    color: var(--light-gray);
+}
+
+.takedown-tile-header .status.pending {
+    background-color: rgba(255, 204, 0, 0.15);
+    color: var(--neon-cyan);
+    border: 1px solid var(--neon-cyan);
+}
+
+.takedown-tile-header .status.sent {
+    background-color: rgba(102, 255, 255, 0.15);
+    color: var(--seafoam);
+    border: 1px solid var(--seafoam);
+}
+
+.takedown-tile-header .status.resolved {
+    background-color: rgba(0, 204, 102, 0.15);
+    color: var(--magenta);
+    border: 1px solid var(--magenta);
+}
+
+.takedown-tile-header .status.pending i,
+.takedown-tile-header .status.sent i,
+.takedown-tile-header .status.resolved i {
+    margin-right: 0.5rem;
+}
+
+
+.takedown-tile-body {
+    margin-bottom: 1rem;
+}
+
+.takedown-tile-body p {
+    color: var(--light-gray);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.takedown-tile-body p strong {
+    color: var(--neon-cyan);
+    margin-right: 0.5rem;
+}
+
+.takedown-tile-body a {
+    color: var(--seafoam);
+}
+
+.takedown-tile-actions {
+    text-align: right;
+}
+
+/* Responsive adjustments for takedowns section */
+@media (max-width: 768px) {
+    .takedowns-section {
+        padding: 1rem;
+    }
+
+    .takedowns-actions {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .takedowns-list {
+        grid-template-columns: 1fr;
     }
 }
