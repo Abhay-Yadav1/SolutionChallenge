@@ -120,5 +120,15 @@
             const content = document.getElementById('content');
             if (content) content.innerHTML = data;
         });
+    fetch('components/details.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('details-container').innerHTML = data;
+        });
+    fetch('components/login.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('login-container').innerHTML = data;
+        });
 </script>
 </html>
