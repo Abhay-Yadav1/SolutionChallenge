@@ -850,7 +850,7 @@ button:active, .button:active {
 
 /* Dashboard Styles */
 .dashboard-container {
-    padding: 2rem;
+    padding: 1rem;
     transition: padding 0.3s ease;
     background-color: var(--dark-bg); /* AMOLED background */
 }
@@ -868,7 +868,7 @@ button:active, .button:active {
     background-color: var(--dark-bg);
     border: 1px solid var(--medium-gray);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 10px;
     text-align: center;
     transition: all 0.5s ease;
@@ -2419,21 +2419,26 @@ nav h1 {
 }
 
 .data-visualization {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin: 2rem 0;
+    display: flex;
+    flex-direction: row; /* Make charts side-by-side */
+    gap: 0.5rem; /* Reduce gap between charts */
+    margin: 0; /* Remove margin */
 }
 
 .chart-container {
     background: var(--dark-bg);
-    padding: 1.5rem;
+    padding: 0rem;
     border-radius: 12px;
     border: 1px solid var(--medium-gray);
-    min-height: 300px;
+    min-height: 150px; /* Further reduce min-height */
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    width: 60%; /* Take up more width for the graph */
+}
+
+.chart-container:nth-child(2) {
+    width: 35%; /* Make the pie chart container smaller */
 }
 
 .chart-container::before {
