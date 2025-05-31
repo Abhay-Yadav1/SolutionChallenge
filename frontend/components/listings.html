@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Shield - Listings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <button id="back-to-top-btn" class="tooltip">
+        <span class="tooltiptext">Back to top</span>
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <div id="app">
+        <header id="navbar"></header>
+        <div id="main-container">
+            <main id="content">
+                <div class="listings-container">
+                    <div class="listings-header">
+                        <h2 class="section-heading">Piracy Reports</h2>
+                    </div>
+                    <div class="search-wrapper">
+                        <div class="search-container">
+                            <input type="search" id="listings-search" placeholder="Search listings..." class="search-input tooltip">
+                            <span class="tooltiptext">Search by file name, website, etc.</span>
+                        </div>
+                    </div>
+                    <table id="piracy-table">
+                        <thead>
+                            <tr>
+                                <th data-sortable="file-name">File Name</th>
+                                <th data-sortable="match-percentage">Match %</th>
+                                <th data-sortable="website">Website</th>
+                                <th data-sortable="date-found">Date Found</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-id="1">
+                                <td>example.pdf</td>
+                                <td>95%</td>
+                                <td>piratebay.com</td>
+                                <td>2024-01-20</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="button action-btn tooltip">View<span class="tooltiptext">View report details</span></button>
+                                        <button class="button action-btn" id="generate-takedown-btn">Generate Takedown</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-id="2">
+                                <td>another-example.mp4</td>
+                                <td>88%</td>
+                                <td>torrentz.eu</td>
+                                <td>2024-01-25</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="button action-btn tooltip">View<span class="tooltiptext">View report details</span></button>
+                                        <button class="button action-btn">Generate Takedown</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-id="3">
+                                <td>copyrighted-image.png</td>
+                                <td>75%</td>
+                                <td>example-forum.net</td>
+                                <td>2024-01-28</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="button action-btn tooltip">View<span class="tooltiptext">View report details</span></button>
+                                        <button class="button action-btn">Generate Takedown</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Takedown Modal -->
+                    <div id="takedown-modal" class="modal d-none">
+                        <div class="modal-content">
+                            <span class="close-button" id="cancel-takedown-btn">&times;</span>
+                            <h3>Confirm Takedown</h3>
+                            <p>Are you sure you want to generate a takedown request for this listing?</p>
+                            <div class="modal-actions">
+                                <button id="confirm-takedown-btn" class="button">Confirm Takedown</button>
+                                <button id="cancel-takedown-btn" class="button">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="../scripts/main.js"></script>
+    <script>
+        fetch('../components/navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                const navbar = document.getElementById('navbar');
+                if (navbar) navbar.innerHTML = data;
+            });
+    </script>
+</body>
+</html>
